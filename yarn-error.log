@@ -1,0 +1,62 @@
+Arguments: 
+  F:\nodejs11.4\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add BMap
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;F:\node;F:\rebyingshtill\Ruby21-x64\bin;F:\GIT\Git\cmd;F:\nodejs11.4\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;F:\node;F:\rebyingshtill\Ruby21-x64\bin;F:\node\;C:\Users\Administrator\AppData\Roaming\npm;D:\vscode\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.4.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/BMap: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65364:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:129397:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:130369:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:130291:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1107:12)
+      at process.internalTickCallback (internal/process/next_tick.js:72:19)
+
+npm manifest: 
+  {
+    "name": "kukr-site",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "start": "node bin/www",
+      "dev": "./node_modules/.bin/nodemon bin/www",
+      "prd": "pm2 start bin/www",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+      "debug": "^4.1.1",
+      "koa": "^2.6.2",
+      "koa-bodyparser": "^4.2.1",
+      "koa-convert": "^1.2.0",
+      "koa-json": "^2.0.2",
+      "koa-logger": "^3.2.0",
+      "koa-onerror": "^4.1.0",
+      "koa-router": "^7.4.0",
+      "koa-static": "^5.0.0",
+      "koa-views": "^6.1.5",
+      "pug": "^2.0.3"
+    },
+    "devDependencies": {
+      "nodemon": "^1.18.9"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
