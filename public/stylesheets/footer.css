@@ -1,0 +1,92 @@
+footer{
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+}
+footer .footer_top {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 3rem;
+
+}
+footer .footer_bottom {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    border-top: 1px solid #eeeeee;
+    padding: 0 20px;
+}
+footer .footer_bottom .friend {
+    margin-bottom: 7px;
+}
+footer .footer_bottom div {
+    text-align: center;
+}
+footer .footer_bottom .friend a {
+    color: #999999 !important;
+    margin: 0 15px;
+}
+footer .link {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+footer .link ul {
+    display: inline-block;
+    margin-right: 50px;
+}
+footer .link ul li {
+    margin: 10px 0;
+}
+footer .link ul .active {
+    color: #666666;
+    font-weight: bold;
+}
+
+footer .erweima {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+footer .erweima img {
+    width: 87px;
+    height: 87px;
+}
+footer .erweima div {
+    color: #666666;
+    margin-top: 10px;
+}
+
+/* 小屏幕（平板，小于等于 768px） */
+@media (max-width: 768px) { 
+    footer .footer_top {
+        flex-direction: column;
+    }
+    footer .erweima {
+        margin-top: 20px;
+    }
+    footer .link ul {
+    display: inline-block;
+    margin-right: 30px;
+    } 
+    footer .link ul li {
+        font-size:12px;
+    }
+     footer .footer_bottom{
+         padding:0 2px;
+          height:70px;
+        font-size:12px;
+     }
+  footer .footer_bottom .div{
+        width:100%;
+  } 
+  footer .erweima div {
+      font-size:12px;
+}
+}

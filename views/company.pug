@@ -1,0 +1,134 @@
+extends layout
+block header
+  link(rel="stylesheet", href="/stylesheets/company.css")
+block content
+  .home
+      .content
+          h5.wow.fadeInUp(data-wow-delay="0.1s") 酷客为营销而生
+          p.wow.fadeInUp(data-wow.delay="0.3s") 酷客致力于为更多公司和团队实现营销目标成为一家拥抱变化、持续创新的好公司
+  //关于我们
+  .aboutWe
+      .dudongp.wow.fadeInUp(data-wow-delay="0.1s")
+          span
+          p 关于我们
+      img(class="douhao" src="/images/home/douhao.png")
+      .pw
+          p.wow.fadeInUp(data-wow-delay="0.1s") 酷客是杭州细叶科技有限公司研发的一套帮助企业营销团队、产品运营团队、微商团队、商务人士获取客户、管理客户、
+          p.wow.fadeInUp(data-wow-delay="0.2s") 提高营销成功率的智能营销系统，产品架构上，我们有集成了SCRM、广投投放系统、大数据拓客系统、短信发送系统等各种营销工具的web端营销平台
+          p.wow.fadeInUp(data-wow-delay="0.3s") 同时移动端有以智能名片为核心的APP+小程序，帮助您随时随地管理维护客户、查看商机线索
+  //团队价值观
+  .team
+      .dudongp.wow.fadeInUp(data-wow-delay="0.1s")
+          //span
+          p 团队价值观
+      .pw2
+          p.p1.wow.fadeInUp(data-wow-delay="0.1s") 酷客团队吸收了阿里的六脉神剑企业文化 - 即诚信、敬业、激情、客户第一、拥抱变化、团队合作，
+          p.p1.wow.fadeInUp(data-wow-delay="0.2s") 同时我们是一个崇尚技术的团队，善于通过学习和工具解决问题。同时对美和品味有着坚持和追求。我们追求结果，对于产品我们有极致的追求
+      .teamx.wow.fadeInUp(data-wow-delay="0.1s")
+          -
+              var diyis=[
+              {p1:"客户第一",color:"#F5B493"},
+              {p1:"团队合作",color:"#93CAF5"},
+              {p1:"拥抱变化",color:"#F5DC93"},
+              {p1:"激情",color:"#F59396"},
+              {p1:"诚信",color:"#93F59D"},
+              {p1:"敬业",color:"#93ADF5"}
+              ]
+          for value in diyis
+              .diyia=value.p1
+  //联系我们
+  .contactMe
+      .dudongp.wow.fadeInUp(data-wow-delay="0.1s")
+          span
+          p 联系我们
+      .contactx
+          .left
+              p 电话：0571-28121986
+              p 邮箱：pay@51shuqu.com
+              p 传真：0571-28121986
+              p 地址：杭州市余杭区文一西路富力天贸广场27幢601-602
+          .right
+             div(id="container")
+  script(type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=3E26FF499dcdfe2c9e5057f126f7274a")
+  script.
+        window.onload = function () {
+        theLocation();
+        }
+        function theLocation() {
+            var map = new BMap.Map("container");          // 创建地图实例
+            var point = new BMap.Point(120.035, 30.2894);  // 创建点坐标
+            map.centerAndZoom(point, 20);                 // 初始化地图，设置中心点坐标和地图级别
+            map.enableScrollWheelZoom(true);
+            var new_point = new BMap.Point(120.035, 30.2894);
+            var marker = new BMap.Marker(new_point);  // 创建标注
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+            map.addOverlay(marker);                 // 将标注添加到地图中
+            map.panTo(new_point);
+            var opts={
+                width:200,
+                height:50,
+                title:"我们在这儿！",
+                styles:{
+                    color:"red"
+                }
+            }
+            // map.openInfoWindow(new BMap.InfoWindow("富力天茂大厦27幢601-602",opts),map.getCenter());
+        }
+
+    //script(type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=d9101312b4e5dc29beea4927ec7753ec")
+  //script.
+  //    window.onload=function () {
+  //        var map = new AMap.Map('container',{
+  //            resizeEnable:true,
+  //            center:[120.028175,30.283243],
+  //            zoom:25,
+  //            enableHighAccuracy: true,
+  //            zoomToAccuracy:true,
+  //            viewMode:'3D'
+  //        });
+  //        var marker=new AMap.Marker({
+  //            position:map.getCenter(),
+  //            draggable:true,
+  //            cursor:"move"
+  //        })
+  //        var trafficLayer = new AMap.TileLayer.Traffic({
+  //            zIndex: 10
+  //        });
+  //        var infoWindow = new AMap.InfoWindow({ //创建信息窗体
+  //            isCustom: true,  //使用自定义窗体
+  //            content: '<div style="color:red;font-size:.4rem;">富力天贸广场27幢601-602</div>', //信息窗体的内容可以是任意html片段
+  //            offset: new AMap.Pixel(16, -45)
+  //        });
+  //        var onMarkerClick = function (e) {
+  //            infoWindow.open(map, e.target.getPosition());//打开信息窗体
+  //            //e.target就是被点击的Marker
+  //        }
+  //        map.add(trafficLayer)
+  //        marker.setMap(map);
+  //        marker.on('click', onMarkerClick)
+  //        marker.setAnimation('AMAP_ANIMATION_BOUNCE');
+  //        var url = 'https://webapi.amap.com/maps?v=1.4.13&key=d9101312b4e5dc29beea4927ec7753ec&callback=onLoad';
+  //        var jsapi = doc.createElement('script');
+  //        jsapi.charset = 'utf-8';
+  //        jsapi.src = url;
+  //        document.head.appendChild(jsapi);
+  //    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

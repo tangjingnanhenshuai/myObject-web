@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title= '英皇互学、IT、技术分享、互动、交友'
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/header.css')
+    link(rel='stylesheet', href='/stylesheets/footer.css')
+    link(href='https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css', rel='stylesheet')
+    link(rel='shortcut icon', href='/images/king.ico')
+    meta(name='viewport', content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no')
+    //meta(name="viewport" content="initial-scale=1.0, user-scalable=no")
+    script(src='https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js')
+    block header
+  body
+    include includes/header.pug
+    block content
+    include includes/footer.pug
+    script(src='https://cdn.bootcss.com/wow/1.1.2/wow.min.js')
+    script.
+      new WOW().init();
+      var docEl=document.documentElement;         //documentElement 属性是根节点
+      resizeEvt='orientationchange' in window ? 'orientationchange': 'resize';
+      recalc = function () {
+        var clientWidth = docEl.clientWidth;
+        if (!clientWidth) return;
+          docEl.style.fontSize = 20 * (clientWidth / 640) + 'px';//设置html根元素的font-size
+      };
+      window.addEventListener(resizeEvt, recalc, false);
+      document.addEventListener('DOMContentLoaded', recalc, false);
+
+      window.onscroll = function() {
+        const top = window.pageYOffset || document.body.scrollTop || document.body.scrollTop || 0
+        if(top >= 0) {
+          $('header').css("background","#ffffff")
+        }else {
+          //- $('header').css("background","rgb(0,0,0,0)")
+        }
+      }
+  
+      

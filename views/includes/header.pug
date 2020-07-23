@@ -1,0 +1,141 @@
+
+header
+	.left
+		p.logo
+			img(src="/images/index/king.png"  alt="logo")
+			div.container
+				svg(viewBox="0 0 1500 300")
+					symbol#line-text
+						text(text-anchor="middle" x="50%" y="50%" dy=".4em") 英皇互学(分享、交友)
+					use(xlink:href="#line-text" class="text")
+					use(xlink:href="#line-text" class="text")
+					use(xlink:href="#line-text" class="text")
+					use(xlink:href="#line-text" class="text")
+	.buttons
+		p.add(onclick="opesssn()") 链接分享
+			
+.dialog#dialog
+	.content
+		p.title  提交分享链接
+		.inrows
+			span.lable 
+				span(style="color:red;width:10px;") *
+				span 链接名称:
+			input(type="text" id="name").inputs
+		.tishi#tishiname  请输入您要分享的内容名称
+		.inrows
+			span.lable 
+				span(style="color:red;width:10px;") *
+				span 链接地址:
+			input(type="text" id="url").inputs
+		.tishi#tishiurl  请输入您要分享的内容链接
+		.inrows.rousselect
+		
+			span.lable 
+				span(style="color:red;width:10px;") *
+				span 链接类型: 
+			select(id="lei").myselect
+				-var leis=["vue","react","java","ES6","css","node","mysql","python","javascript","c",'c++',"前端","生活",'爱情']
+					for val in leis
+						option(value=val).options #{val}
+		.tishi#tishilei  请选择您分享的内容类型
+
+		.inrows
+			span.lable 分享人(您):
+			input(type="text" id="upname").inputs
+		.inrows
+			span.lable 联系方式:
+			input(type="text" id="upqq").inputs
+		.footer
+			p.btn(onclick="cancel()") 取消
+			p.btn.primary(onclick="submit()") 确定
+
+
+script.
+	function opesssn(){
+		$("#dialog").show()
+	}
+	function cancel(){
+	$("#dialog").hide()
+	}
+
+
+	function getcurrentdate(){
+			const curentdate = new Date();
+			let aa=curentdate.getFullYear();
+			let bb=curentdate.getMonth() + 1;
+			let b=bb > 9 ? bb : `0${bb}`;
+			const cc=curentdate.getDate();
+			const c=cc > 9 ? cc : `0${cc}`;
+			return `${aa}-${b}-${c}`;
+		//- return "2020-07-16"
+	}
+	$(document).ready(function(){
+	//- $("button").click(function(){
+	//-     $("p").slideToggle();
+	//- });
+	});
+  
+	function submit(){
+		$(".tishi").hide()
+		let name = $("#name").val()
+		let url = $("#url").val()
+		let lei = $("#lei").val()
+		let upname = $("#upname").val()
+		let upqq = $("#upqq").val()
+		if(!name){
+			$("#tishiname").show()
+			return 
+		}
+		if(!url){
+			$("#tishiurl").show()
+			return 
+		}
+		if(!lei){
+			$("#tishilei").show()
+			return 
+		}
+		if(!upname){
+			upname="一名不知名的网友"
+		}
+		if(!upqq){
+			upqq="网友未透露"
+		}
+		let data={
+			name:name,
+			url:url,
+			lei:lei,
+			upname:upname,
+			upqq:upqq,
+			date:getcurrentdate()
+		}
+		$.ajax({
+						type:"POST",
+						// url:"https://api.kukr.com/api/marketing/productApply/kukr",
+						url: "/submit",
+						data: JSON.stringify(data) ,
+						async: true,
+						dataType: "json",
+						contentType: 'application/json; charset=UTF-8',
+						// // jsonp:"calback",
+						// crossDomain: true,
+						success:function (res){
+								if(res.success){
+										alert("提交成功！感谢您为社区做出的贡献！")
+										$("#dialog").hide()
+						    		//- window.location.href="/index"
+										window.location.reload()
+								}else{
+										//- alert("哇！网络好像出状况了，请您稍后再试！")
+										//- $(".shenqing").hide()
+								}
+						},
+						error:function (jqxhr) {
+								console.log(jqxhr)
+						}
+				})
+
+
+	}
+
+	
