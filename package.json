@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "debug": "^4.1.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
