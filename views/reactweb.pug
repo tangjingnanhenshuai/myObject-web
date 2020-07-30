@@ -1,0 +1,37 @@
+extends layout
+block header
+  link(rel="stylesheet", href="/stylesheets/aboutme.css")
+  link(rel="stylesheet", href="/stylesheets/header2.css")
+block top
+  include includes/header2.pug
+block content
+  h3.titleh3 口号：专为营销而生、企业自己的营销平台、总部管理后台、代理商管理后台、主要使用 react、dva、redux、namespace、antd、主要功能为 商家注册、商家投放广告、广告图片裁剪、微信广告视频广告、短视频营销、聊天互动、发送表情图片文件等（由于视频录制晚，所以只有前端部分、不能交互）
+  .data 
+    -  
+     list = [ { id: 1,  name: '互动聊天和营销平台基本模块', url: 'http://localhost:3001/video/chart.mp4',img: 'http://localhost:3001/img/chart.png',date: '2020-7-28' },
+      { id: 2, name: '查看商家后台余额等部分模块', url: 'http://localhost:3001/video/bufgongn.mp4', img: 'http://localhost:3001/img/bufgongn.png',date: '2020-7-28' },
+      { id: 3, name: '营销平台部分部分代码', url: 'http://localhost:3001/video/react-dm.mp4',img: 'http://localhost:3001/img/react-dm.png',date: '2020-7-28' },
+      { id: 4, name: '总管理后台', url: 'http://localhost:3001/video/zglht.mp4',img: 'http://localhost:3001/img/zglht.png', date: '2020-7-28' },];
+    
+    for val in list
+      .videodiv
+        h4=val.name
+        video(  name=val.name onclick="videoC(this)" controls height="90%" width="90%" poster=val.img src=val.url)
+  .dialog2#dialog2
+    .content#content
+      h2(onclick="cancel()") X
+      p#title 
+      #videodiv
+  script.
+    function videoC(that){
+      $("#dialog2").show()
+      let imgurl= $(that).attr('poster')
+      let url= $(that).attr('src')
+      let name=$(that).attr('name') 
+      $("#title").html( name )
+      $("#videodiv").html( `  <video autoplay controls height="550px" width="850px" poster=${imgurl} src= ${url}> </video>` )
+
+    }
+    function cancel(){
+      $("#dialog2").hide()
+    }

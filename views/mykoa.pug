@@ -1,0 +1,35 @@
+extends layout
+block header
+  link(rel="stylesheet", href="/stylesheets/aboutme.css")
+  link(rel="stylesheet", href="/stylesheets/header2.css")
+block top
+  include includes/header2.pug
+block content
+  h3.titleh3 酷客营销平台官网、本网站等、使用koa2和pug引擎模板、服务端渲染和浏览器渲染配合、使用pm2部署、此网站后台使用node.js编写、包括使用mysql建立数据库、建表、和增删改查、视频和图片使用http创建服务采用二进制流传输、使带宽仅有 1M 的服务器也能有流畅的体验
+  .data 
+    -  
+     list = [ { id: 1,  name: '酷客营销平台官网： kukr.com', url: 'http://localhost:3001/video/koa+pug.mp4',img: 'http://localhost:3001/img/koa+pug.png',date: '2020-7-28' },
+      { id: 2, name: '英皇互学、技术分享（本网站）', url: 'http://localhost:3001/video/yinghuang.mp4', img: 'http://localhost:3001/img/yinghuang.png',date: '2020-7-28' },];
+    
+    for val in list
+      .videodiv
+        h4=val.name
+        video(  name=val.name onclick="videoC(this)" controls height="90%" width="90%" poster=val.img src=val.url)
+  .dialog2#dialog2
+    .content#content
+      h2(onclick="cancel()") X
+      p#title 
+      #videodiv
+  script.
+    function videoC(that){
+      $("#dialog2").show()
+      let imgurl= $(that).attr('poster')
+      let url= $(that).attr('src')
+      let name=$(that).attr('name') 
+      $("#title").html( name )
+      $("#videodiv").html( `  <video autoplay controls height="550px" width="850px" poster=${imgurl} src= ${url}> </video>` )
+
+    }
+    function cancel(){
+      $("#dialog2").hide()
+    }

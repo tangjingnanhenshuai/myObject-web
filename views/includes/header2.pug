@@ -1,19 +1,42 @@
 
-header
+.header
 	.left
 		p.logo
 			img(src="http://localhost:3001/img/index/king.png"  alt="logo")
 			div.container
 				svg(viewBox="0 0 1500 300")
 					symbol#line-text
-						text(text-anchor="middle" x="50%" y="50%" dy=".4em") 英皇互学(分享、交友)
+						text(text-anchor="middle" x="50%" y="50%" dy=".4em") 一些项目经验
 					use(xlink:href="#line-text" class="text")
 					use(xlink:href="#line-text" class="text")
 					use(xlink:href="#line-text" class="text")
 					use(xlink:href="#line-text" class="text")
-	.buttons
-		p.add(onclick="opesssn()") 链接分享
-		a(href="/aboutme")  给hr看个人已上线项目
+	.menu
+		ul
+			li.chanpin
+				if PATHNAME == "/aboutme"
+					a(href="/aboutme").active 数据可视化
+				else
+					a(href="/aboutme") 数据可视化
+			li
+				if PATHNAME == "/otherweb"
+					a(href="/otherweb").active vue+element
+				else
+					a(href="/otherweb") vue+element
+			li
+				if PATHNAME == "/reactweb"
+					a(href="/reactweb").active react、dva
+				else
+					a(href="/reactweb") react、dva
+			li
+				if PATHNAME == "/mykoa"
+					a(href="/mykoa").active koa+引擎模板
+				else
+					a(href="/mykoa") koa+引擎模板
+	.right
+		a(href="/")  去首页
+	//- .buttons
+		//- p.add(onclick="opesssn()") 链接分享111111111
 			
 .dialog#dialog
 	.content

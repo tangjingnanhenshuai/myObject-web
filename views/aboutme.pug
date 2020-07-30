@@ -1,0 +1,42 @@
+extends layout
+block header
+  link(rel="stylesheet", href="/stylesheets/aboutme.css")
+  link(rel="stylesheet", href="/stylesheets/header2.css")
+block top
+  include includes/header2.pug
+block content
+  h3.titleh3 浙江省税务局数据可视化大屏项目 主要使用 echarts 、 实现数据可视化大屏、框架为vue、axios实现交互
+  .data 
+    -  
+     list = [ { id: 1,  name: '高德地图自定义地图样式区域搜索', url: 'http://localhost:3001/video/qysy.mp4',img: 'http://localhost:3001/img/qysy.png',date: '2020-7-28' },
+      { id: 2, name: '地盘倾斜转动自动手动点击切换展示内容', url: 'http://localhost:3001/video/sjgk.mp4', img: 'http://localhost:3001/img/sjgk.png',date: '2020-7-28' },
+      { id: 3, name: '条幅滚动大屏', url: 'http://localhost:3001/video/tfgddp.mp4',img: 'http://localhost:3001/img/tfgddp.png',date: '2020-7-28' },
+      { id: 4, name: '飞线滑动高亮中国地图', url: 'http://localhost:3001/video/china.mp4',img: 'http://localhost:3001/img/china.png', date: '2020-7-28' },
+      { id: 5, name: '实时全省税收情况、滚动数字、地区选中高亮', url: 'http://localhost:3001/video/sskjj.mp4', img: 'http://localhost:3001/img/sskjj.png',date: '2020-7-28' },
+      { id: 6, name: '增长趋势概况大屏', url: 'http://localhost:3001/video/zzqs.mp4',img: 'http://localhost:3001/img/zzqs.png', date: '2020-7-28' },
+      { id: 7, name: '地图带重点坐标，地图下钻、企业下钻', url: 'http://localhost:3001/video/zdsy.mp4', img: 'http://localhost:3001/img/zdsy.png',  date: '2020-7-28' },
+      { id: 8,  name: '地图数量用颜色深度区分、左右联动可下钻', url: 'http://localhost:3001/video/fpdsj.mp4', img: 'http://localhost:3001/img/fpdsj.png', date: '2020-7-28' },
+      { id: 9, name: '办税大厅实时数据', url: 'http://localhost:3001/video/bsdt.mp4', img: 'http://localhost:3001/img/bsdt.png',date: '2020-7-28' },
+      { id: 10,  name: '大屏项目效果总览',  url: 'http://localhost:3001/video/xgzl.mp4',img: 'http://localhost:3001/img/xgzl.png', date: '2020-7-28' } ];
+    for val in list
+      .videodiv
+        h4=val.name
+        video(  name=val.name onclick="videoC(this)" controls height="90%" width="90%" poster=val.img src=val.url)
+  .dialog2#dialog2
+    .content#content
+      h2(onclick="cancel()") X
+      p#title 
+      #videodiv
+  script.
+    function videoC(that){
+      $("#dialog2").show()
+      let imgurl= $(that).attr('poster')
+      let url= $(that).attr('src')
+      let name=$(that).attr('name') 
+      $("#title").html( name )
+      $("#videodiv").html( `  <video autoplay controls height="550px" width="850px" poster=${imgurl} src= ${url}> </video>` )
+
+    }
+    function cancel(){
+      $("#dialog2").hide()
+    }

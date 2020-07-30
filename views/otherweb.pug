@@ -1,0 +1,38 @@
+extends layout
+block header
+  link(rel="stylesheet", href="/stylesheets/aboutme.css")
+  link(rel="stylesheet", href="/stylesheets/header2.css")
+block top
+  include includes/header2.pug
+block content
+  h3.titleh3 浙江省税务局数据查询分析系统、主要使用 vue、axios、 elementUI、vueX、d3.js、echarts、包括复杂逻辑交互、大量数据展示速度优化、d3.js绘制企业结构、四员关系、公共组件封装引用
+  .data 
+    -  
+     list = [ { id: 1,  name: '百度识无count查询复杂表格页面前端导出', url: 'http://localhost:3001/video/daochu.mp4',img: 'http://localhost:3001/img/daochu.png',date: '2020-7-28' },
+      { id: 2, name: '不同维度搜索对应模块', url: 'http://localhost:3001/video/shichang.mp4', img: 'http://localhost:3001/img/shichang.png',date: '2020-7-28' },
+      { id: 3, name: '功能政策反显以供查看', url: 'http://localhost:3001/video/fanxian.mp4',img: 'http://localhost:3001/img/fanxian.png',date: '2020-7-28' },
+      { id: 4, name: '复杂多条件维制提交政策', url: 'http://localhost:3001/video/fuzatiaojian.mp4',img: 'http://localhost:3001/img/fuzatiaojian.png', date: '2020-7-28' },
+      { id: 5, name: 'd3绘制企业和人员关系', url: 'http://localhost:3001/video/d3huizhi.mp4', img: 'http://localhost:3001/img/d3huizhi.png',date: '2020-7-28' }, ];
+    
+    for val in list
+      .videodiv
+        h4=val.name
+        video(  name=val.name onclick="videoC(this)" controls height="90%" width="90%" poster=val.img src=val.url)
+  .dialog2#dialog2
+    .content#content
+      h2(onclick="cancel()") X
+      p#title 
+      #videodiv
+  script.
+    function videoC(that){
+      $("#dialog2").show()
+      let imgurl= $(that).attr('poster')
+      let url= $(that).attr('src')
+      let name=$(that).attr('name') 
+      $("#title").html( name )
+      $("#videodiv").html( `  <video autoplay controls height="550px" width="850px" poster=${imgurl} src= ${url}> </video>` )
+
+    }
+    function cancel(){
+      $("#dialog2").hide()
+    }

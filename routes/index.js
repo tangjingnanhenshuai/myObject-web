@@ -8,7 +8,18 @@ const select = require("../sql/select")
 const insert = require("../sql/insert")
 const gettatal = require('../sql/gettotal')
 const addcishu = require("../sql/addcixhu")
+const selectvideo =require("../sql/selectvideo")
 
+router.get('/getvideo', async (ctx, next) => {
+    await selectvideo({no:1}).then( (res)=>{
+         console.log(res)
+        //  ctx.body = {code: 200, success:true, data:res};
+         ctx.body = res
+        // await  {code: 200, success:true, data:res};
+    }).catch(err=>{
+        ctx. body ={code: 500,success:false, message: "Error!", data: err};
+    })
+})
 router.get('/', async (ctx, next) => {
     const res = await rp("http://localhost:3000/add?no=1")
 	await ctx.render('index', {
@@ -25,6 +36,31 @@ router.get('/index', async (ctx, next) => {
         list:res
 	})
 })
+router.get('/aboutme', async (ctx, next) => {
+    // const que = ctx.query
+    // console.log(que)
+    // const res = await rp(`http://localhost:3000/add?no=${que.no}`)
+	await ctx.render('aboutme', {
+        PATHNAME: ctx.path,
+        // list:res
+	})
+})
+router.get('/otherweb', async (ctx, next) => {
+    await ctx.render('otherweb', {
+        PATHNAME: ctx.path
+    })
+})
+router.get('/reactweb', async (ctx, next) => {
+    await ctx.render('reactweb', {
+        PATHNAME: ctx.path
+    })
+})
+router.get('/mykoa', async (ctx, next) => {
+    await ctx.render('mykoa', {
+        PATHNAME: ctx.path
+    })
+})
+
 router.get('/add', async (ctx,next)=>{ 
     const que = ctx.query
     await  select({no:que.no,lei:que.lei}).then((res)=>{
