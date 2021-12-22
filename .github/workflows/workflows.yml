@@ -8,23 +8,33 @@ on:
   paths:
     - ".github/workflows/**"
     - "views/**"
+
 jobs:
-  test: 
-    rens-on: ubuntu-latest
-    seteps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with: 
-          node-version: 14
-          - name: print node version
-            run: 
-              node -V
-              npm -V
-test2: 
-  runs-on: ubuntu-latest
-  steps: 
-    - run: touch a.txt
-    - run: echo 100>a.txt
-    - run: cat a.txt
+  my-job:
+    name: My job
+    runs-on: ubuntu-latest
+    steps:
+    - name:  Print a greeting
+      env:
+        MY_VAR: Hi there! My name is
+        FIRST_NAME: Mona
+        MIDDLE_NAME: The
+        LAST_NAME: Octocat
+      run: |
+      echo  $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+  
+# jobs:
+#   test: 
+#     rens-on: ubuntu-latest
+#     seteps:
+#       - uses: actions/checkout@v2
+#       - name: Use Node.js
+#         uses: actions/setup-node@v1
+#         with: 
+#           node-version: 14
+#           - name: print node version
+#             run: 
+#               node -V
+#               npm -V
+
                  
