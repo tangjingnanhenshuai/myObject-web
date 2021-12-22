@@ -18,3 +18,5 @@ dist.zip
 .umi-production
 
 package-lock.json
+
+.docker-volumes/
